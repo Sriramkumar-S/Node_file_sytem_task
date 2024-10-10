@@ -11,7 +11,11 @@ const isoDate = date.toISOString().replaceAll(':', '-').split('.')[0]
 
 // POST
 server.post('/create-file', (req, res) => {
-    createFiles('./api-files', `${timestamp}.txt`, isoDate, () => {
+    const date = new Date();
+    const timestamp = date.getTime().toString();
+    const isoDate = date.toISOString().replaceAll(':', '-').split('.')[0]
+    createFiles('./api-files', `${isoDate}.txt`, timestamp, () => {
+        console.log('file created')
         res.status(201).json({ message: `File created successfully` })
     })
 })

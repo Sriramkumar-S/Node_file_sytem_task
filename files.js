@@ -5,11 +5,11 @@ import fs from 'fs'
 export const createFiles = (folderpath, fileName, fileContent, callBack = () => { }) => {
     if (!fs.existsSync(folderpath)) {
         fs.mkdirSync(folderpath);
-        fs.writeFile(`${folderpath}/${fileName}`, fileContent, () => {
-            console.log(`File ${fileName} created successfully.`);
-            callBack();
-        });
     }
+    fs.writeFile(`${folderpath}/${fileName}`, fileContent, () => {
+        console.log(`File ${fileName} created successfully.`);
+        callBack();
+    });
 }
 
 export const getFiles = (folderpath, successFn, errorFn) => {
